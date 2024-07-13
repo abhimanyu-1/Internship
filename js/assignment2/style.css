@@ -1,0 +1,175 @@
+body{
+    color: rgb(0, 0, 0);
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(0, 0, 29);
+    height: 1600px;
+    width: 85%;
+    margin-left: 80px;
+    margin-top: 50px;
+}
+.container .modify{
+    margin: 30px;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(251, 251, 251);
+}
+.container .modify input{
+    align-items: center;
+    width: 50%;
+    margin-left: 60px;
+}
+.container .modify h1{
+    text-align: center;
+}
+.container .modify h3{
+    margin-left: 80px;
+    padding-top: 50px;
+}
+.container .modify button{
+    width: 30%;
+    background-color: yellow;
+    border: 2px rgb(0, 0, 29) solid;
+}
+.container .modify button:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.bg-color{
+    margin: 30px;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(251, 251, 251);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container .bg-color button{
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 30%;
+    height: 15%;
+    background-color: yellow;
+    border: 2px rgb(0, 0, 29) solid;
+}
+.container .bg-color button:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+#headline{
+    margin: 30px;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(251, 251, 251);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#headline h1{
+    text-align: center;
+    color: rgb(183, 183, 1);
+    font-size:2rem;
+    font-weight: bold;
+}
+.details{
+    margin: 30px;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(251, 251, 251);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.details form{
+    width: 50%;
+    justify-content: space-evenly;
+}
+.details button{
+    margin-top: 10px;
+    background-color: yellow;
+    justify-content: center;
+}
+.browse{
+    margin: 30px;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(251, 251, 251);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.browse button{
+    background-color: yellow;
+    margin: 20px;
+    padding: 10px;
+    width: 90px;
+    font-weight: bold;
+    font: 2rem;
+}
+.list{
+    margin: 30px;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(251, 251, 251);
+}
+.list ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+.list ul li{
+    margin: 20px;
+    cursor: pointer;
+}
+.list .para{
+    font-weight: bold;
+    text-align: left;
+    margin: 50px;
+}
+
+.dom{
+    margin-left: 280px;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(251, 251, 251);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dom form{
+    width: 50%;
+    justify-content: space-evenly;
+}
+.dom button{
+    margin-top: 10px;
+    background-color: yellow;
+    justify-content: center;
+}
+button{
+    cursor: pointer;
+}
+button:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.event {
+    margin-left: 20px;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(251, 251, 251);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.event .box{
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: yellow;
+    width: 350px;
+    border: 2px solid black;
+}

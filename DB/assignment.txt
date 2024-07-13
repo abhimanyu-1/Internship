@@ -1,0 +1,62 @@
+create database school;
+use school;
+-- table creation
+create table school.student(
+			studentID int primary key auto_increment,
+            FirstName varchar(225),
+            LastName varchar(225),
+            DateOfBirth date,
+            Gender enum('Male','Female'));
+            
+create table school.courses(
+			courseID int primary key auto_increment,
+            courseName varchar(225),
+            credits int);
+            
+create table school.enrollments(
+			entrollmentID int primary key auto_increment,
+            studentID int,
+            courseID int,
+            entrollmentDate date,
+            foreign key(studentID) references student(studentID),
+            foreign key(courseID) references courses(courseID));
+            
+desc school.student;
+desc school.courses;
+desc school.enrollments;
+
+-- table insertion
+insert into school.student(studentID,FirstName,LastName,DateOfBirth,Gender) 
+		values(1,'John','Doe','2000-01-15','Male');
+        
+insert into school.student(studentID,FirstName,LastName,DateOfBirth,Gender) 
+		values(2,'Jane','Smith','2001-02-20','Female');
+        
+insert into school.student(studentID,FirstName,LastName,DateOfBirth,Gender) 
+		values(3,'Mike','Brown','1999-05-30','Male');
+        
+select * from school.student;
+
+insert into school.courses(courseID,courseName,credits) 
+		values(1000,'computer science',4);
+        
+insert into school.courses(courseName,credits) 
+		values('biology science',4);
+        
+insert into school.courses(courseName,credits) 
+		values('history',3);
+        
+select * from school.courses;
+
+-- updation
+update school.student 
+set LastName = 'johnson' 
+where FirstName = 'John';
+
+select * from school.student;
+
+-- deletion
+delete from school.student
+where Firstname='mike';
+
+select * from school.student;

@@ -1,0 +1,53 @@
+@media only screen and (max-width: 600px ) {
+ 
+    #Main-menu {
+        display: none;
+    }
+ 
+    #menu-icon {
+        display: block;
+    }
+    #mobile-menu {
+        display: block;
+        position: absolute;
+        width: 200px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 99;
+        height: 100vh;
+        background-color: rgba(193, 193, 193, 0.263);
+        padding: 40px 0 20px;
+    }
+    #mobile-menu ul li {
+        list-style: none;
+    }
+    #mobile-menu ul li a {
+        color: #fff;
+        display: block;
+        padding: 5px 12px;
+    }
+    
+    #about .flex {
+        flex-direction: column;
+    }
+ 
+    #client .cards {
+        display: block;        
+    }
+    #client .cards .card {        
+        flex-direction: column;
+        margin-right: 0;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    footer .top .flex {
+        flex-direction: column;
+    }
+    #gallery #gallery-mobile{
+        display: block;
+        margin-right: 70px;
+    }
+ 
+}
+ 

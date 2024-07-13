@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container-home">
+        <div class="header">
+            <div class="logo"><img src="../ajax/logo.jpg"></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="#container-home">Home</a></li>
+                    <li><a href="#container-dog">Dog</a></li>
+                    <li><a href="#container-cat">Cat</a></li>
+                </ul>
+            </div>
+        </div>
+        <h1>FIND YOUR NEW BEST FRIEND</h1>
+        <div id="slide-show"></div>
+    </div>
+
+    <div id="container-dog">
+        <div class="exit"><a href="#container-home"><img src="../ajax/home.png"></a></div>
+        <h1 id="d-head">DOG</h1>
+        <div class="d-content">
+            <div class="drop">
+                <select id="dog-drop" name="select" onclick="getDogBreeds()">
+                    <option>select a breed</option>
+                </select>
+                <div class="btn"><button id="d-submit" onclick="getDogImageAndBreed()">Random</button></div>
+            </div>
+            <div class="d-show">
+                <div class="d-main">
+                    <input type="text" id="d-search" placeholder="Enter a dog name">
+                    <button id="d-enter" onclick="searchDog()">Enter</button>
+                </div>
+                <div class="d-img">
+                    <div class="d-image"> <img id="dog-image"></div>
+                    <div class="d-desc"> <div id="doide"></div> </div>
+                </div>
+                <div class="love">
+                    <a onclick="toggleLove()"><img id="dog-like-icon" src="../ajax/like.png"></a>
+                </div>
+            </div>
+        </div>
+        <div class="loading">
+            <button id="dog-load-more" onclick="loadMoreDogs()">Load More</button>
+            <div id="dog-images"></div>
+        </div>
+    </div>
+
+    <div id="container-cat">
+        <div class="exit"><a href="#container-home"><img src="../ajax/home.png"></a></div>
+        <h1 id="c-head">CAT</h1>
+        <div class="c-content">
+            <div class="drop">
+                <select id="cat-drop" name="select" onclick="getCatBreeds()">
+                    <option>select</option>
+                </select>
+                <div class="btn"><button id="d-submit" onclick="getCatRandom()">Random</button></div>
+            </div>
+            <div class="c-show">
+                <div class="c-main">
+                    <input type="text" id="c-search" placeholder="Enter a dog name">
+                    <button id="c-enter" onclick="searchCat()">Enter</button>
+                </div>
+                <div class="c-img">
+                    <div class="c-image"><img id="cat-img"></div>
+                    <div class="c-desc"><div id="catdis"></div></div>
+                </div>
+                <div class="love">
+                    <a onclick="love1()"><img id="cat-like-icon" src="../ajax/like.png"></a>
+                </div>
+            </div>
+        </div>
+        <div class="cloading">
+            <button id="cat-load-more" onclick="loadMoreCats()">Load More</button>
+            <div id="cat-images"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

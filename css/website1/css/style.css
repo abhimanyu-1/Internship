@@ -1,0 +1,231 @@
+
+* { 
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    text-decoration: none;
+    outline: none;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+} 
+
+
+header {
+    background: #fff;
+    box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.16);
+    padding: 10px 0;
+}
+header .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo a img {
+    height: 30px;
+}
+
+header nav ul li {
+    list-style: none;
+    display: inline;
+} 
+header nav li a {
+    padding: 10px;
+    color: #1A1A1B;
+}
+
+#main-page {
+    background: url(../img/img1.png) no-repeat center;
+    background-size: cover;
+    padding: 180px 0;
+}
+#main-page h1 {
+    font-weight: 600;
+}
+#main-page .contents {
+    width: 60%;
+    color: #fff;
+}
+#main-page .contents p {
+    margin: 15px 0;
+}
+
+#main-page .contents .buttons .button {
+    display: inline-block;
+    background: #F69400;
+    padding: 8px 30px;
+    color: #fff;
+    border-radius: 25px;
+}
+
+#gallery {
+    background: #fff;
+    padding: 40px 0;
+}
+#gallery h2 {
+    margin-bottom: 20px;
+}
+
+#gallery .gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#gallery .gallery .right {
+    margin-left: 10px;
+}
+#gallery .gallery .right .top {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#gallery .gallery .image-box {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#gallery .gallery .image-box img {
+    display: block;
+    width: 100%;
+}
+
+#about {
+    background: #fff;
+    padding: 40px 0;
+}
+#about .flex {
+    display: flex;
+}
+#about .left {
+    margin-right: 15px;
+}
+#about .left img {
+    display: block;
+    width: 100%;
+}
+
+#about .right h2 {
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+#about .right p {
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    text-align: justify;
+}
+
+#client {
+    background: #EBEBEE;
+    padding: 40px 0;
+}
+#client h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#client .cards {
+    display: flex;
+    width: 100%;
+}
+
+#client .cards .card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+#client .cards .card:nth-child(2n) {
+    margin-right: 0;
+}
+
+#client .cards .card .left {
+    text-align: center;
+    margin-right: 10px;
+}
+#client .cards .card .left .details {
+    margin: 10px 0;
+    color: #4d4d4d;
+}
+#client .cards .card .right p {
+    color: #4d4d4e;
+}
+
+footer .top {
+    padding: 40px 0;
+    background: #0083C3;
+    color: #fff;
+    font-size: 12px;
+}
+footer .top .flex {
+    display: flex;
+    justify-content: space-between;
+}
+footer .top .about {
+    width: 40%;
+}
+footer .top .about p {
+    margin: 15px 0;
+} 
+footer .top .about .social {
+    display: flex;
+}
+footer .top .about .social .icon-round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    padding: 8px 0;
+    text-align: center;
+    border: 2px solid #fff;
+    margin-right: 5px;
+}
+footer .top .nav {
+    margin: 0 15px;
+}
+footer .top nav ul {
+    margin-top: 15px;
+}
+footer .top nav ul li {
+    list-style: none;
+}
+footer .top nav ul li a {
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+footer .top .location {
+    width: 30%;
+}
+footer .top .location .details .item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+footer .top .location .details .item img {
+    width: 20px;
+    margin-right: 10px;
+}
+footer .top .location .details {
+    margin-top: 15px;
+}
+
+footer .bottom {
+    padding: 10px 0;
+    background: #0070A7;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+}

@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.container {
+    background-image: url(../assignment3/bg.jpg);
+    background-size: cover;
+    height: 700px;
+    width: 700px;
+    margin-top: 40px;
+    margin-left: 500px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+}
+
+.heading h1 {
+    padding-top: 60px;
+    font-size: 3rem;
+    text-align: center;
+    color: rgb(0, 3, 63);
+}
+
+.to-do-all {
+    padding: 10px;
+}
+
+.main-inp {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.main-inp input {
+    background-color: rgba(254, 220, 176, 0.754);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    flex: 1;
+}
+
+.main-inp a {
+    display: inline-block;
+    text-align: center;
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: rgb(244, 219, 186);
+    text-decoration: none;
+    border-radius: 5px;
+    color: rgb(0, 3, 63);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-weight: bold;
+}
+.main-inp a:hover{
+    background-color: rgb(255, 198, 124);
+}
+.content {
+    margin-top: 10px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.279);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.item h1 {
+    font-size: 1.5rem;
+    color: rgb(0, 3, 63);
+}
+
+.images {
+    display: flex;
+    gap: 10px;
+}
+
+.images img {
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="first">
+    <div class="container">
+        <label>Enter the radius</label>
+        <input type="text" id="radius">
+        <P id="answer"></P>
+        <div class="btn">
+            <button id="area">Area</button>
+            <button id="circ">circumference</button>
+        </div>
+
+    </div>
+
+
+    <div class="container-s">
+        <h1>Simple intrest</h1>
+        <div class="simpleintrest">
+            <div class="p"><label for="amount">Principle Amount<input type="text" id="p"></label></div>
+            <div class="n"><label for="year">Rate<input type="text" id="n"></label></div>
+            <div class="r"><label for="rate">Number of years<input type="text" id="r"></label></div>
+        </div>
+        <p id="ans"></p>
+        <div class="submit">
+            <button id="submit-s">Submit</button>
+        </div>
+    </div>
+
+    <div class="containert">
+        <label>°C</label>
+        <input type="text" id="cel">
+        <label>°F</label>
+        <input type="text" id="faran">
+        <div class="ans">
+            <P id="cel-ans"></P>
+            <P id="far-ans"></P>
+        </div>
+        <div class="btn">
+            <button id="cel-box">convert</button>
+            <button id="faran-box">convert</button>
+        </div>
+
+    </div>
+</div>
+
+    <div class="main">
+        <div class="container1">
+            <h1 id="greeting_name">welcome</h1>
+        </div>
+        <div class="container2">
+            <h1 id="reverse_name">Reverse</h1>
+        </div>
+        <div class="container3">
+            <div class="inp"><label for="occ">Enter the word<input id="occ" type="text"></label></div>
+            <button id="submit-occ">Submit</button>
+            <h1 id="occurance"></h1>
+        </div>
+        <div class="btn-grt"><button id="press">press</button></div>
+    </div>
+
+    <div class="array">
+
+    <div class="container-array">
+        <h1>Random List</h1>
+        <p id="random_ans"></p>
+        <button id="enter">Enter</button>
+    </div>
+
+    <div class="container-array">
+        <h1>[1,2,3,4,5]</h1>
+        <p id="ars_ans"></p>
+        <div class="arr-btn">
+            <button id="a-sum">Sum</button>
+            <button id="a-avg">Avg</button>
+            <button id="a-max">Max</button>
+            <button id="a-min">Min</button>
+        </div>
+        
+    </div>
+
+    <div class="container-array">
+        <h1 id="name_array"></h1>
+        <label>Enter Name</label><input type="text" id="values">
+        <button id="name_enter">Enter</button>
+    </div>
+
+</div>
+
+
+<div class="object-main">
+    <div class="container-object">
+        <h2>Add Entries</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber">
+        <button onclick="addEntry()">Add Entry</button>
+        <p id="addressBookResult"></p>
+    </div>
+    
+    <div class="container-object">
+        <h2>Create Student Object</h2>
+        <label for="studentName">Name:</label>
+        <input type="text" id="studentName">
+        <label for="grades">Grades:</label>
+        <input type="text" id="grades">
+        <button onclick="createStudent()">Create Student</button>
+        <p id="studentResult"></p>
+    </div>
+
+    <div class="container-object">
+        <h2>Product Information</h2>
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName">
+        <label for="productPrice">Price:</label>
+        <input type="text" id="productPrice">
+        <label for="productQuantity">Quantity:</label>
+        <input type="text" id="productQuantity">
+        <button onclick="addProduct()">Add Product</button>
+        <label for="searchProduct">Search Product:</label>
+        <input type="text" id="searchProduct">
+        <button onclick="searchProduct()">Search</button>
+        <p id="productResult"></p>
+    </div>
+</div>
+
+<div class="dom">
+<div class="container-color">
+    <h1>Random Color</h1>
+    <button id="enter-color">Enter</button>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
