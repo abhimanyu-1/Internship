@@ -1,0 +1,624 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .success-popup .popup-content {
+        	color:red;
+            border-top: 5px solid green;
+        }
+        
+        .error-popup .popup-content {
+            border-top: 5px solid red;
+        }
+        
+        .popup button {
+            margin-top: 15px;
+            padding: 8px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .popup button:hover {
+            background-color: green;
+        }
+        
+        /* Styles for passenger selector */
+        .passenger-selector {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .passenger-type {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 5px 0;
+        }
+        
+        .passenger-count {
+            display: flex;
+            align-items: center;
+        }
+        
+        .passenger-count button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .passenger-count input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            font-size: 16px;
+            margin: 0 8px;
+        }
+        
+        .passenger-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .passenger-info-title {
+            font-weight: bold;
+        }
+        
+        .passenger-info-desc {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .suggestions {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            z-index: 100;
+            max-height: 150px;
+            overflow-y: auto;
+            width: 90%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .suggestions li {
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+        
+        .suggestions li:hover {
+            background-color: #f1f1f1;
+        }
+        
+        #single-box {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+        <!-- navbar -->
+        <div class="navbar">
+            <div class="welc">
+                <i class="fa-solid fa-bars" onclick="showNav()"></i>
+                <h3> <span id="u">user</span> </h3>
+                
+            </div>
+            <div class="headerr">
+                <a href="javascript:location.reload();">Home</a>
+                <a href="../../profile/profile.html">My Profile</a>
+                <a href="../../home/html/myTrip.html">My Trips</a>
+                <a href="logout">Log Out</a>
+            </div>
+        </div>
+
+        <div class="Snavbar" id="Snavbar">
+            <div class="Sheaderr" id="Sheaderr">
+                <a href="">Home</a>
+                <a href="../../profile/profile.html">My Profile</a>
+                <a href="../../home/html/myTrip.html">My Trips</a>
+                <a href="logout">Log Out</a>
+            </div>
+        </div>
+        
+        <!-- navbar -->
+<!-- ******************************************************************************************************* -->
+
+        <div class="content">
+            <div class="booking-container">
+                <div class="head"><i class="fa-solid fa-plane"></i>&nbsp; &nbsp;<h1>Book a flight</h1></div>
+                <div class="options">
+                    <input type="radio" name="re" id="one" checked> <label for="one">One way</label>
+                    <input type="radio" name="re" id="round"> <label for="round">Round Trip</label>
+                    <input type="radio" name="re" id="multi"> <label for="multi">Multiple City</label>
+                </div>
+                <div class="city">
+                
+                <!-- Updated form with passenger information -->
+                
+<form action="search" method="POST">
+    <div class="from" id="single-box">
+        <p>From</p>
+        <input type="text" name="from" placeholder="Starting from" id="from" oninput="showSuggestions('from')" autocomplete="on" required>
+        <p>Search by Place/Airport</p>
+        <ul id="from-suggestions" class="suggestions"></ul>
+    </div>
+    <div><i class="fa-solid fa-right-left"></i></div>
+    <div class="To" id="single-box">
+        <p>To</p>
+        <input type="text" name="to" placeholder="Going to ?" id="to" oninput="showSuggestions('to')" autocomplete="off" required>
+        <p>Search by Place/Airport</p>
+        <ul id="to-suggestions" class="suggestions"></ul>
+    </div>
+
+    <div class="Dep" id="single-box">
+        <p>Depature</p>
+        <input type="date" id="inputdate" name="inputdate" min="" onfocus="disablePastDates()" required>
+        <p>Search by Place/Airport</p>
+    </div>
+
+    <!-- New Passenger Selection Section -->
+    <div class="passenger-selector">
+        <h3>Passenger Information</h3>
+        
+        <div class="passenger-type">
+            <div class="passenger-info">
+                <span class="passenger-info-title">Adults</span>
+                <span class="passenger-info-desc">12+ years</span>
+            </div>
+            <div class="passenger-count">
+                <button type="button" onclick="updatePassenger('adult', -1)">-</button>
+                <input type="number" id="adultCount" name="adultCount" value="1" min="1" max="9" readonly>
+                <button type="button" onclick="updatePassenger('adult', 1)">+</button>
+            </div>
+        </div>
+        
+        <div class="passenger-type">
+            <div class="passenger-info">
+                <span class="passenger-info-title">Children</span>
+                <span class="passenger-info-desc">2-11 years</span>
+            </div>
+            <div class="passenger-count">
+                <button type="button" onclick="updatePassenger('child', -1)">-</button>
+                <input type="number" id="childCount" name="childCount" value="0" min="0" max="9" readonly>
+                <button type="button" onclick="updatePassenger('child', 1)">+</button>
+            </div>
+        </div>
+        
+        <div class="passenger-type">
+            <div class="passenger-info">
+                <span class="passenger-info-title">Infants</span>
+                <span class="passenger-info-desc">Under 2 years</span>
+            </div>
+            <div class="passenger-count">
+                <button type="button" onclick="updatePassenger('infant', -1)">-</button>
+                <input type="number" id="infantCount" name="infantCount" value="0" min="0" max="4" readonly>
+                <button type="button" onclick="updatePassenger('infant', 1)">+</button>
+            </div>
+        </div>
+        
+        <div id="totalPassengers">
+            Total passengers: 1
+        </div>
+    </div>
+    
+    <div class="code">
+        <a href="#" id="add">+ Add promocode</a>
+        <input type="submit" name="Search" id="btn" value="Search">
+    </div>
+</form>
+            </div>
+        </div>
+
+        <div class="ad">
+            <div class="heading">
+                <p id="where">WHERE ARE YOU GOING TO PLAN NEXT ?</p>
+                <p id="save">Save on your journey by <span id="exploring">exploring</span> these routes with lower fares</p>
+            </div>
+
+            <div class="ad-box">
+                <div class="one" id="one"></div>
+                <div class="one" id="two"></div>
+                <div class="one" id="three"></div>
+            </div>
+        </div>
+
+
+
+<!-- No Flights Popup -->
+<div id="noFlightsPopup" class="popup error-popup">
+    <div class="popup-content">
+        <p id="noFlightsMessage">No flights available for your search.</p>
+        <button id="noFlightsOkBtn">OK</button>
+    </div>
+</div>
+
+<!-- Error Popup -->
+<div id="errorPopup" class="popup error-popup">
+    <div class="popup-content">
+        <p id="errorMessage">An error occurred. Please try again.</p>
+        <button id="errorOkBtn">OK</button>
+    </div>
+</div>
+
+<!-- Seat Capacity Popup -->
+<div id="capacityPopup" class="popup error-popup">
+    <div class="popup-content">
+        <p id="capacityMessage">Not enough seats available for your selection.</p>
+        <button id="capacityOkBtn">OK</button>
+    </div>
+</div>
+
+<script>
+    // Design part
+    const username = localStorage.getItem('name');
+    // Check if username exists before setting it
+    if (username) {
+        document.getElementById('u').innerHTML = 'Welcome ' + username + '!!';
+    }
+    
+    document.querySelector('.fa-right-left').addEventListener('click', function() {
+        const fromInput = document.querySelector('.from input');
+        const toInput = document.querySelector('.To input');
+        // Swap the input values
+        [fromInput.value, toInput.value] = [toInput.value, fromInput.value];
+    });
+    
+    document.querySelectorAll('.from input, .To input').forEach(input => {
+        input.addEventListener('mouseenter', function() {
+            this.placeholder = 'Start typing...';
+        });
+    
+        input.addEventListener('mouseleave', function() {
+            this.placeholder = this.closest('.from') ? 'From' : 'Going to ?';
+        });
+    });
+
+    // Passenger selection functions
+    function updatePassenger(type, change) {
+        const maxTotal = 9; // Maximum passengers allowed
+        const maxInfants = 4; // Maximum infants (as a safety rule)
+        
+        // Get all current counts
+        let adultCount = parseInt(document.getElementById('adultCount').value);
+        let childCount = parseInt(document.getElementById('childCount').value);
+        let infantCount = parseInt(document.getElementById('infantCount').value);
+        
+        // Calculate current total
+        let totalPassengers = adultCount + childCount + infantCount;
+        
+        // Handle the change based on passenger type
+        if (type === 'adult') {
+            // Ensure at least 1 adult
+            if (adultCount + change < 1) {
+                return;
+            }
+            
+            // Check if we're going over the max total
+            if (totalPassengers + change > maxTotal) {
+                showCapacityPopup("Maximum " + maxTotal + " passengers allowed per booking.");
+                return;
+            }
+            
+            adultCount += change;
+        } else if (type === 'child') {
+            // Prevent negative values
+            if (childCount + change < 0) {
+                return;
+            }
+            
+            // Check if we're going over the max total
+            if (totalPassengers + change > maxTotal) {
+                showCapacityPopup("Maximum " + maxTotal + " passengers allowed per booking.");
+                return;
+            }
+            
+            childCount += change;
+        } else if (type === 'infant') {
+            // Prevent negative values
+            if (infantCount + change < 0) {
+                return;
+            }
+            
+            // Check if we're going over the max infant limit
+            if (infantCount + change > maxInfants) {
+                showCapacityPopup("Maximum " + maxInfants + " infants allowed per booking.");
+                return;
+            }
+            
+            // Check if we're going over the max total
+            if (totalPassengers + change > maxTotal) {
+                showCapacityPopup("Maximum " + maxTotal + " passengers allowed per booking.");
+                return;
+            }
+            
+            // Ensure we don't have more infants than adults (safety rule)
+            if (infantCount + change > adultCount) {
+                showCapacityPopup("Number of infants cannot exceed number of adults.");
+                return;
+            }
+            
+            infantCount += change;
+        }
+        
+        // Update the input fields
+        document.getElementById('adultCount').value = adultCount;
+        document.getElementById('childCount').value = childCount;
+        document.getElementById('infantCount').value = infantCount;
+        
+        // Update total display
+        totalPassengers = adultCount + childCount + infantCount;
+        document.getElementById('totalPassengers').textContent = "Total passengers: " + totalPassengers;
+    }
+
+    // Popup functions
+    function showNoFlightsPopup(message) {
+        document.getElementById('noFlightsMessage').textContent = message;
+        document.getElementById('noFlightsPopup').style.display = 'flex';
+    }
+
+    function showErrorPopup(message) {
+        document.getElementById('errorMessage').textContent = message;
+        document.getElementById('errorPopup').style.display = 'flex';
+    }
+    
+    function showCapacityPopup(message) {
+        document.getElementById('capacityMessage').textContent = message;
+        document.getElementById('capacityPopup').style.display = 'flex';
+    }
+
+    // Hide popups when clicking their buttons
+    document.getElementById('noFlightsOkBtn').addEventListener('click', function() {
+        document.getElementById('noFlightsPopup').style.display = 'none';
+    });
+
+    document.getElementById('errorOkBtn').addEventListener('click', function() {
+        document.getElementById('errorPopup').style.display = 'none';
+    });
+    
+    document.getElementById('capacityOkBtn').addEventListener('click', function() {
+        document.getElementById('capacityPopup').style.display = 'none';
+    });
+
+    // Check for popup triggers from servlet when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const noFlights = urlParams.get('noflights');
+        const error = urlParams.get('error');
+        const capacity = urlParams.get('capacity');
+        
+        if (noFlights) {
+            showNoFlightsPopup(decodeURIComponent(noFlights));
+        }
+        
+        if (error) {
+            showErrorPopup(decodeURIComponent(error));
+        }
+        
+        if (capacity) {
+            showCapacityPopup(decodeURIComponent(capacity));
+        }
+        
+        // Ensure suggestion elements exist
+        ensureSuggestionElements();
+        
+        // Ensure date input has the current date as minimum
+        disablePastDates();
+    });
+
+    // validation Area
+    const suggestions = [
+        "Agartala", "Agatti Island", "Agra", "Ahmedabad", "Aizawl", "Akola", "Along", "Allahabad", "Amritsar", "Aurangabad",
+        "Bagdogra", "Bangalore", "Bareilly", "Bellary", "Bhatinda", "Bhavnagar", "Bhopal", "Bhubaneswar", "Bikaner", "Bilaspur",
+        "Car Nicobar", "Chandigarh", "Chennai", "Cochin", "Cooch Behar", "Cuddapah", "Daman", "Daparizo", "Darjeeling", "Dehradun",
+        "Dhanbad", "Dibrugarh", "Dimapur", "Diu", "Gaya", "Goa", "Gorakhpur", "Guna", "Guwahati", "Gwalior", "Hubli", "Hyderabad",
+        "Imphal", "Indore", "Jabalpur", "Jagdalpur", "Jaipur", "Jaisalmer", "Jammu", "Jamnagar", "Jamshedpur", "Jeypore", "Jodhpur",
+        "Kailashahar", "Kamalpur", "Kandla", "Kanpur", "Keshod", "Khajuraho", "Khowai", "Kolhapur", "Kota", "Kozhikode", "Kullu",
+        "Leh", "Lilabari", "Lucknow", "Ludhiana", "Madurai", "Malda", "Mangalore", "Mumbai", "Muzaffarnagar", "Muzaffarpur",
+        "Mysore", "Nagpur", "Nanded", "Nasik", "Neyveli", "Osmanabad", "Pantnagar", "Pasighat", "Pathankot", "Patna", "Pondicherry",
+        "Porbandar", "Port Blair", "Pune", "Puttaparthi", "Raipur", "Rajahmundry", "Rajkot", "Ramagundam", "Ranchi", "Ratnagiri",
+        "Rewa", "Rourkela", "Salem", "Satna", "Shillong", "Shimla", "Sholapur", "Silchar", "Siliguri", "Srinagar", "Surat", "Tezpur",
+        "Tezu", "Thanjavur", "Thiruvananthapuram", "Tiruchirappalli", "Tirupati", "Tuticorin", "Udaipur", "Vadodara", "Varanasi",
+        "Vijayawada", "Visakhapatnam", "Warangal", "Zero"
+    ];
+    
+    // Update your showSuggestions function
+    function showSuggestions(field) {
+        const input = document.getElementById(field);
+        const suggestionBox = document.getElementById(`${field}-suggestions`);
+        const query = input.value.toLowerCase();
+        
+        // Debug logging to help identify issues
+        console.log(`Field: ${field}, Input element:`, input);
+        console.log(`Suggestion box element:`, suggestionBox);
+        
+        // Check if suggestionBox exists
+        if (!suggestionBox) {
+            console.error(`Suggestion box for ${field} not found`);
+            return;
+        }
+        
+        // Clear previous suggestions
+        suggestionBox.innerHTML = "";
+
+        if (query) {
+            // Make the suggestions box visible
+            suggestionBox.style.display = 'block';
+            
+            const filtered = suggestions.filter(city => city.toLowerCase().includes(query));
+            console.log(`Found ${filtered.length} suggestions for "${query}"`);
+            
+            if (filtered.length > 0) {
+                filtered.forEach(city => {
+                    const li = document.createElement("li");
+                    li.textContent = city;
+                    li.onclick = () => {
+                        input.value = city;
+                        suggestionBox.innerHTML = "";
+                        suggestionBox.style.display = 'none';
+                    };
+                    suggestionBox.appendChild(li);
+                });
+            } else {
+                // Show "no results" message
+                const li = document.createElement("li");
+                li.textContent = "No matching cities found";
+                li.style.fontStyle = "italic";
+                li.style.color = "#888";
+                suggestionBox.appendChild(li);
+            }
+        } else {
+            // Hide the suggestions box if query is empty
+            suggestionBox.style.display = 'none';
+        }
+    }
+
+    // Add these functions to your script section to ensure the suggestion elements exist
+    function ensureSuggestionElements() {
+        // Check if from-suggestions exists, if not create it
+        let fromSuggestions = document.getElementById('from-suggestions');
+        if (!fromSuggestions) {
+            console.log("Creating missing from-suggestions element");
+            fromSuggestions = document.createElement('ul');
+            fromSuggestions.id = 'from-suggestions';
+            fromSuggestions.className = 'suggestions';
+            const fromInput = document.getElementById('from');
+            if (fromInput && fromInput.parentNode) {
+                fromInput.parentNode.appendChild(fromSuggestions);
+            }
+        }
+        
+        // Check if to-suggestions exists, if not create it
+        let toSuggestions = document.getElementById('to-suggestions');
+        if (!toSuggestions) {
+            console.log("Creating missing to-suggestions element");
+            toSuggestions = document.createElement('ul');
+            toSuggestions.id = 'to-suggestions';
+            toSuggestions.className = 'suggestions';
+            const toInput = document.getElementById('to');
+            if (toInput && toInput.parentNode) {
+                toInput.parentNode.appendChild(toSuggestions);
+            }
+        }
+    }
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.matches('#from, #to')) {
+            document.getElementById('from-suggestions').style.display = 'none';
+            document.getElementById('to-suggestions').style.display = 'none';
+        }
+    });
+
+    // Add focus event to show suggestions again if input has value
+    document.getElementById('from').addEventListener('focus', function() {
+        if (this.value) {
+            showSuggestions('from');
+        }
+    });
+
+    document.getElementById('to').addEventListener('focus', function() {
+        if (this.value) {
+            showSuggestions('to');
+        }
+    });
+
+    function restrictToSuggestions(field) {
+        const input = document.getElementById(field);
+        if (!suggestions.includes(input.value.trim())) {
+            input.value = "";
+        }
+    }
+
+    document.getElementById('from').addEventListener("blur", () => restrictToSuggestions('from'));
+    document.getElementById('to').addEventListener("blur", () => restrictToSuggestions('to'));   
+
+    function disablePastDates() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("inputdate").setAttribute("min", today);
+    }
+
+    function showNav() {
+        document.getElementById('Snavbar').classList.toggle('hide');
+    }
+    
+    // Form validation before submission
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const from = document.getElementById('from').value;
+        const to = document.getElementById('to').value;
+        
+        // Basic validation
+        if (from === to) {
+            e.preventDefault();
+            showErrorPopup("Origin and destination cannot be the same.");
+            return;
+        }
+        
+        // Store passenger counts in localStorage for access in next page
+        const adultCount = document.getElementById('adultCount').value;
+        const childCount = document.getElementById('childCount').value;
+        const infantCount = document.getElementById('infantCount').value;
+        
+        localStorage.setItem('adultCount', adultCount);
+        localStorage.setItem('childCount', childCount);
+        localStorage.setItem('infantCount', infantCount);
+        localStorage.setItem('from', from);
+        localStorage.setItem('to', to);
+    });
+</script>
+</body>
+</html>
